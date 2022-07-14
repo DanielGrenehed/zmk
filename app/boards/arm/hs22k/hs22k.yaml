@@ -1,0 +1,13 @@
+identifier: hs22k
+name: hs22k
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - adc
+  - usb_device
+  - ble
+  - pwm
+  - watchdog

@@ -1,0 +1,11 @@
+file_format: "1"
+id: hs22k
+name: hs22k
+type: board
+arch: arm
+features:
+  - keys
+outputs:
+  - usb
+  - ble
+url: https://github.com/DanielGrenehed/HS22K
