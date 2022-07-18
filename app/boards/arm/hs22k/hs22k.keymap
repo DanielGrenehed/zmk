@@ -61,7 +61,14 @@
 			label = "ANGLE-BRACKET";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
-			bindings = <&kp GRAVE>, <&kp LS(GRAVE)>;
+			bindings = <&kp NON_US_BSLH>, <&kp PIPE2>;
+		};
+		td5: td-mlt-div {
+			compatible = "zmk,behavior-tap-dance";
+			label = "MLT-DIV";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp LS(BSLH)>, <&kp LS(N7)>;
 		};
     };
 
@@ -83,27 +90,27 @@
 
 		mod1_layer {
 			// ---------------------------------------------------
-			// | ≈ | ' | <> | () |				 | [] | {} | = | | |
-			// | Å | X | Ä | G |			 | J | ENTER | Ö | , |
+			// | ≈ | ' | <> | () |			| [] | {} | = | | |
+			// | Å | X | Ä | G |			| J | ENTER | Ö | , |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
 				&kp RA(N0) &kp BSLH &td4 &td1		&td2 &td3 &kp LS(N0) &kp RA(N7)
 				&kp LBKT &kp X &kp APOS &kp G 		&kp J &kp RET &kp SEMI &kp COMMA
-				&trans &trans &trans &trans		&trans &trans &trans &trans
+				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
 		};
 
 		mod2_layer {
 			// ---------------------------------------------------
-			// | < | ´ | ¨ | + |				 | 1 | 2 | 3 | 0 |
-			// | @ | ~ | ^ | - |				 | 7 | 8 | 9 | - |
+			// | § | ´ | ¨ | + |				 | 1 | 2 | 3 | 0 |
+			// | @ | ~ | ^ | - |				 | 7 | 8 | 9 | */ |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp GRAVE &kp EQUAL &kp RBKT &kp MINUS	&kp N1 &kp N2 &kp N3 &kp N0
-				&kp RA(N2) &kp RA(EQUAL) &kp LS(EQUAL) &kp FSLH 		&kp N7 &kp N8 &kp N9 &kp FSLH
-				&trans &trans &trans &trans				&trans &trans &trans &trans
+				&kp GRAVE &kp EQUAL &kp RBKT &kp MINUS				&kp N1 &kp N2 &kp N3 &kp N0
+				&kp RA(N2) &kp RA(EQUAL) &kp LS(EQUAL) &kp FSLH 	&kp N7 &kp N8 &kp N9 &td5
+				&trans &trans &trans &trans							&trans &trans &trans &trans
 			>;
 		};
 		
@@ -212,7 +219,7 @@
 
 			| upper row
 			-----------------------------------------
-			| # | " | / | < |		| ? | & | ! | % |
+			| # | " | / | - |		| ? | & | ! | % |
 			-----------------------------------------
 			| lower row
 		*/
@@ -238,7 +245,7 @@
 			timeout-ms = <30>;
 			key-positions = <3 11>;
 			layers = <1>;
-			bindings = <&kp LT>;
+			bindings = <&kp FSLH>;
 		};
 
 		combo_butt_5l1 {
@@ -270,7 +277,7 @@
 			Layer 2 In-between row
 
 			-----------------------------------------
-			| 0 | 0 | 0 | 0 |		| 4 | 5 | 6 | 0 |
+			| ! | " | # | € |		| 4 | 5 | 6 | % |
 			-----------------------------------------
 
 		*/
@@ -278,25 +285,25 @@
 			timeout-ms = <30>;
 			key-positions = <0 8>;
 			layers = <2>;
-			bindings = <&kp N0>;
+			bindings = <&kp EXCL>;
 		};
 		combo_butt_2l2 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
 			layers = <2>;
-			bindings = <&kp N0>;
+			bindings = <&kp AT>;
 		};
 		combo_butt_3l2 {
 			timeout-ms = <30>;
 			key-positions = <2 10>;
 			layers = <2>;
-			bindings = <&kp N0>;
+			bindings = <&kp HASH>;
 		};
 		combo_butt_4l2 {
 			timeout-ms = <30>; 
 			key-positions = <3 11>;
 			layers = <2>;
-			bindings = <&kp N0>;
+			bindings = <&kp DLLR>;
 		};
 		combo_butt_5l2 {
 			timeout-ms = <30>;
@@ -320,39 +327,87 @@
 			timeout-ms = <30>;
 			key-positions = <7 15>;
 			layers = <2>;
-			bindings = <&kp N0>;
+			bindings = <&kp PRCNT>;
 		};
 		
 		/* 
 			Layer 3 In-between row
-			-----------------------------------------
-			|   |   |   |   |		|   |   |   |   |
-			-----------------------------------------
+			-----------------------------------------------------------------
+			| INT1 | INT2 | INT3 | INT4 |		| INT5 | INT6 | INT7 | INT8 |
+			-----------------------------------------------------------------
 		*/
+		combo_butt_1l3 {
+			timeout-ms = <30>;
+			key-positions = <0 8>;
+			layers = <3>;
+			bindings = <&kp INT1>;
+		};
+		combo_butt_2l3 {
+			timeout-ms = <30>;
+			key-positions = <1 9>;
+			layers = <3>;
+			bindings = <&kp INT2>;
+		};
+		combo_butt_3l3 {
+			timeout-ms = <30>;
+			key-positions = <2 10>;
+			layers = <3>;
+			bindings = <&kp INT3>;
+		};
+		combo_butt_4l3 {
+			timeout-ms = <30>;
+			key-positions = <3 11>;
+			layers = <3>;
+			bindings = <&kp INT4>;
+		};
+		combo_butt_5l3 {
+			timeout-ms = <30>;
+			key-positions = <4 12>;
+			layers = <3>;
+			bindings = <&kp INT5>;
+		};
+		combo_butt_6l3 {
+			timeout-ms = <30>;
+			key-positions = <5 13>;
+			layers = <3>;
+			bindings = <&kp INT6>;
+		};
+		combo_butt_7l3 {
+			timeout-ms = <30>;
+			key-positions = <6 14>;
+			layers = <3>;
+			bindings = <&kp INT7>;
+		};
+		combo_butt_8l3 {
+			timeout-ms = <30>;
+			key-positions = <7 15>;
+			layers = <3>;
+			bindings = <&kp INT8>;
+		};
 
 		/* 
 			Layer 4 In-between row
 			-------------------------------------------------------------
-			| 0 | 0 | 0 | Clear Bt profile |		| 0 | 0 | 0 | Flash |
+			| & | / | ( | Clear Bt profile |		| ) | = | ? | Flash |
 			-------------------------------------------------------------
 		*/
 		combo_butt_1l4 {
 			timeout-ms = <30>;
 			key-positions = <0 8>;
 			layers = <4>;
-			bindings = <&kp N0>;
+			bindings = <&kp CARET>;
 		};
 		combo_butt_2l4 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
 			layers = <4>;
-			bindings = <&kp N0>;
+			bindings = <&kp AMPS>;
 		};
 		combo_butt_3l4 {
 			timeout-ms = <30>;
 			key-positions = <2 10>;
 			layers = <4>;
-			bindings = <&kp N0>;
+			bindings = <&kp STAR>;
 		};
 		combo_butt_4l4 {
 			timeout-ms = <30>;
@@ -364,19 +419,19 @@
 			timeout-ms = <30>;
 			key-positions = <4 12>;
 			layers = <4>;
-			bindings = <&kp N0>;
+			bindings = <&kp LPAR>;
 		};
 		combo_butt_6l4 {
 			timeout-ms = <30>;
 			key-positions = <5 13>;
 			layers = <4>;
-			bindings = <&kp N0>;
+			bindings = <&kp RPAR>;
 		};
 		combo_butt_7l4 {
 			timeout-ms = <30>;
 			key-positions = <6 14>;
 			layers = <4>;
-			bindings = <&kp N0>;
+			bindings = <&kp UNDER>;
 		};
 		combo_butt_8l4 {
 			timeout-ms = <30>;
