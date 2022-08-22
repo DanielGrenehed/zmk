@@ -70,6 +70,27 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp LS(BSLH)>, <&kp LS(N7)>;
 		};
+		td6: strofe {
+			compatible = "zmk,behavior-tap-dance";
+			label = "STROFE";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp EQUAL>, <&kp LS(EQUAL)>;
+		};
+		td7: sequal {
+			compatible = "zmk,behavior-tap-dance";
+			label = "SEQUAL";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp LS(N0)>, <&kp RA(N0)>;
+		};
+		td8: sminus {
+			compatible = "zmk,behavior-tap-dance";
+			label = "SMINUS";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp FSLH>, <&kp RA(RBKT)>;
+		};
     };
 
 	keymap {
@@ -90,12 +111,12 @@
 
 		mod1_layer {
 			// ---------------------------------------------------
-			// | ≈ | ' | <> | () |			| [] | {} | = | | |
+			// | @ | ' | <> | () |			| [] | {} | = | | |
 			// | Å | X | Ä | G |			| J | ENTER | Ö | , |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp RA(N0) &kp BSLH &td4 &td1		&td2 &td3 &kp LS(N0) &kp RA(N7)
+				&kp RA(N2) &kp BSLH &td4 &td1		&td2 &td3 &kp LS(N0) &kp RA(N7)
 				&kp LBKT &kp X &kp APOS &kp G 		&kp J &kp RET &kp SEMI &kp COMMA
 				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
@@ -103,13 +124,13 @@
 
 		mod2_layer {
 			// ---------------------------------------------------
-			// | § | ´ | ¨ | + |				 | 1 | 2 | 3 | 0 |
-			// | @ | ~ | ^ | - |				 | 7 | 8 | 9 | */ |
+			// | § | ´` | ¨ | + |				 | 1 | 2 | 3 | 0 |
+			// | ≈ | ~ | =≈ | -~ |				 | 7 | 8 | 9 | */ |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp GRAVE &kp EQUAL &kp RBKT &kp MINUS				&kp N1 &kp N2 &kp N3 &kp N0
-				&kp RA(N2) &kp RA(EQUAL) &kp LS(EQUAL) &kp FSLH 	&kp N7 &kp N8 &kp N9 &td5
+				&kp GRAVE &td6 &kp RBKT &kp MINUS				&kp N1 &kp N2 &kp N3 &kp N0
+				&kp RA(N0) &kp RA(RBKT) &td7 &td8 	&kp N7 &kp N8 &kp N9 &td5
 				&trans &trans &trans &trans							&trans &trans &trans &trans
 			>;
 		};
