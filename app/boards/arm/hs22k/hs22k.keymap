@@ -28,7 +28,7 @@
 		/*
 
 		*/
-        td0: td-cmd-ctrl {
+        tdCMDCTRL: td-cmd-ctrl {
             compatible = "zmk,behavior-tap-dance";
             label = "CMD-CTRL";
             #binding-cells = <0>;
@@ -91,6 +91,41 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp FSLH>, <&kp RA(RBKT)>;
 		};
+		tdNextPrev: nextprev {
+			compatible = "zmk,behavior-tap-dance";
+			label = "NextPrev";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp C_NEXT>, <&kp C_PREV>;
+		};
+		tdBackDelete: backdelete {
+			compatible = "zmk,behavior-tap-dance";
+			label = "BackDelete";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp BSPC>, <&kp DEL>;
+		};
+		tdSpaceTab: spacetab {
+			compatible = "zmk,behavior-tap-dance";
+			label = "SpaceTab";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp SPACE>, <&kp TAB>;
+		};
+		tdStrings: strings {
+			compatible = "zmk,behavior-tap-dance";
+			label = "Strings";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp BSLH>, <&kp LS(N2)>;
+		};
+		tdSlashes: slashes {
+			compatible = "zmk,behavior-tap-dance";
+			label = "Slashes";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp LS(N7)>, <&kp RA(LS(N7))>;
+		};
     };
 
 	keymap {
@@ -100,23 +135,23 @@
 			// --------------------------------------------------------
 			// | A | W | F | P |				 	  | L | U | Y | O |
 			// | D | R | S | T |				 	  | N | E | I | . |
-			// | N/A | ALT | SHIFT | WIN/CTRl | SPACE | MO | MO | MO  |
+			// | N/A | ALT | SHIFT | WIN/CTRl | SPACE/TAB | MO | MO | MO  |
 			// --------------------------------------------------------
 			bindings = <
 				&kp A &kp W &kp F &kp P					&kp L &kp U &kp Y &kp O
 				&kp D &kp R &kp S &kp T 				&kp N &kp E &kp I &kp DOT
-				&gresc &kp RALT &kp LSHIFT &td0		&kp SPACE &mo 1 &mo 2 &mo 4
+				&gresc &kp RALT &kp LSHIFT &tdCMDCTRL		&tdSpaceTab &mo 1 &mo 2 &mo 4
 			>;
 		};
 
 		mod1_layer {
 			// ---------------------------------------------------
-			// | @ | ' | <> | () |			| [] | {} | = | | |
+			// | @ | '/" | <> | () |			| [] | {} | /\ | | |
 			// | Å | X | Ä | G |			| J | ENTER | Ö | , |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp RA(N2) &kp BSLH &td4 &td1		&td2 &td3 &kp LS(N0) &kp RA(N7)
+				&kp RA(N2) &tdStrings &td4 &td1		&td2 &td3 &tdSlashes &kp RA(N7)
 				&kp LBKT &kp X &kp APOS &kp G 		&kp J &kp RET &kp SEMI &kp COMMA
 				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
@@ -129,20 +164,20 @@
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp GRAVE &td6 &kp RBKT &kp MINUS				&kp N1 &kp N2 &kp N3 &kp N0
+				&kp GRAVE &td6 &kp RBKT &kp MINUS	&kp N1 &kp N2 &kp N3 &kp N0
 				&kp RA(N0) &kp RA(RBKT) &td7 &td8 	&kp N7 &kp N8 &kp N9 &td5
-				&trans &trans &trans &trans							&trans &trans &trans &trans
+				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
 		};
 		
 		mod3_layer {
 			// ---------------------------------------------------
-			// | tab | backspace | UP | delete |		 | F10 | F11 | F12 | F2 |
+			// | tab | backspace/delete | UP | apps |	 | F10 | F11 | F12 | F2 |
 			// | sl4 | RIGHT | DOWN | LEFT |	 		 | F5 | ESC | F1 | F4 |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp TAB &kp BSPC &kp UP &kp DEL			&kp F10 &kp F11 &kp F12 &kp F2
+				&kp TAB &tdBackDelete &kp UP &kp K_APP	&kp F10 &kp F11 &kp F12 &kp F2
 				&sl 4 &kp LEFT &kp DOWN &kp RIGHT 		&kp F5 &kp ESC &kp F1 &kp F4
 				&trans &trans &trans &trans				&trans &trans &trans &trans
 			>;
@@ -150,13 +185,13 @@
 
 		mod4_layer {
 			// ---------------------------------------------------
-			// | 0 | bt0 | bt1 | bt2 |	| Brightness up | play/pause | volume up | Lock |
-			// | out_toggle | bt3 | bt4 | bt5 |		| Brightness down | 5 | volume down | 0 |
+			// | 0 | bt0 | bt1 | bt2 |				| Brightness up | play/pause | volume up | Lock |
+			// | out_toggle | bt3 | bt4 | bt5 |		| Brightness down | Next/Prev | volume down | 0 |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
 				&kp N0 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2		&kp C_BRI_UP &kp C_PP &kp C_VOL_UP &kp K_PWR
-				&out OUT_TOG &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 	&kp C_BRI_DN &kp N5 &kp C_VOL_DN &kp N0
+				&out OUT_TOG &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 	&kp C_BRI_DN &tdNextPrev &kp C_VOL_DN &kp N0
 				&trans &trans &trans &trans								&trans &trans &trans &trans
 			>;
 		};
