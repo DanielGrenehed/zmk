@@ -35,56 +35,56 @@
             tapping-term-ms = <200>;
             bindings = <&kp LGUI>, <&kp LCTRL>;
         };
-		td1: td-bracket {
+		td1: td-bracket { /* ( ) */
 			compatible = "zmk,behavior-tap-dance";
 			label = "BRACKET";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp LS(N8)>, <&kp LS(N9)>;
-		};
-		td2: td-square-bracket {
+		}; 
+		td2: td-square-bracket { /* [ ] */
 			compatible = "zmk,behavior-tap-dance";
 			label = "SQUARE-BRACKET";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp RA(N8)>, <&kp RA(N9)>;
 		};
-		td3: td-curly-bracket {
+		td3: td-curly-bracket { /* { } */
 			compatible = "zmk,behavior-tap-dance";
 			label = "CURLY-BRACKET";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp LS(RA(N8))>, <&kp LS(RA(N9))>;
 		};
-		td4: td-angle-bracket {
+		td4: td-angle-bracket { /* < > */
 			compatible = "zmk,behavior-tap-dance";
 			label = "ANGLE-BRACKET";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp NON_US_BSLH>, <&kp PIPE2>;
 		};
-		td5: td-mlt-div {
+		td5: td-mlt-div { /* * / */
 			compatible = "zmk,behavior-tap-dance";
 			label = "MLT-DIV";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp LS(BSLH)>, <&kp LS(N7)>;
 		};
-		td6: strofe {
+		td6: strofe { /* ´ ` */
 			compatible = "zmk,behavior-tap-dance";
 			label = "STROFE";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp EQUAL>, <&kp LS(EQUAL)>;
 		};
-		td7: sequal {
+		td7: sequal { /* = ≈ */
 			compatible = "zmk,behavior-tap-dance";
 			label = "SEQUAL";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp LS(N0)>, <&kp RA(N0)>;
 		};
-		td8: sminus {
+		td8: sminus { /* - ~ */
 			compatible = "zmk,behavior-tap-dance";
 			label = "SMINUS";
 			#binding-cells = <0>;
@@ -112,14 +112,14 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp SPACE>, <&kp TAB>;
 		};
-		tdStrings: strings {
+		tdStrings: strings { /* ' " */
 			compatible = "zmk,behavior-tap-dance";
 			label = "Strings";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp BSLH>, <&kp LS(N2)>;
 		};
-		tdSlashes: slashes {
+		tdSlashes: slashes { /* / \ */
 			compatible = "zmk,behavior-tap-dance";
 			label = "Slashes";
 			#binding-cells = <0>;
@@ -172,12 +172,12 @@
 		
 		mod3_layer {
 			// ---------------------------------------------------
-			// | tab | backspace/delete | UP | apps |	 | F10 | F11 | F12 | F2 |
+			// | Delete | Backspace | UP | apps |	 | F10 | F11 | F12 | F2 |
 			// | sl4 | RIGHT | DOWN | LEFT |	 		 | F5 | ESC | F1 | F4 |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp TAB &tdBackDelete &kp UP &kp K_APP	&kp F10 &kp F11 &kp F12 &kp F2
+				&kp DEL &kp BSPC &kp UP &kp K_APP	&kp F10 &kp F11 &kp F12 &kp F2
 				&sl 4 &kp LEFT &kp DOWN &kp RIGHT 		&kp F5 &kp ESC &kp F1 &kp F4
 				&trans &trans &trans &trans				&trans &trans &trans &trans
 			>;
