@@ -388,57 +388,59 @@
 		
 		/* 
 			Layer 3 In-between row
+
+			Magnet align thirds
 			-----------------------------------------------------------------
-			| INT1 | INT2 | INT3 | INT4 |		| INT5 | INT6 | INT7 | INT8 |
+			| CTRL+ALT+D | CTRL+ALT+E | CTRL+ALT+F | CTRL+ALT+T |		| CTRL+ALT+G | CTRL+ALT+C | WIN+SPACE | WIN+ALT+SHIFT+Q |
 			-----------------------------------------------------------------
 		*/
 		combo_butt_1l3 {
 			timeout-ms = <30>;
 			key-positions = <0 8>;
 			layers = <3>;
-			bindings = <&kp INT1>;
+			bindings = <&kp RC(RA(D))>;
 		};
 		combo_butt_2l3 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
 			layers = <3>;
-			bindings = <&kp INT2>;
+			bindings = <&kp RC(RA(E))>;
 		};
 		combo_butt_3l3 {
 			timeout-ms = <30>;
 			key-positions = <2 10>;
 			layers = <3>;
-			bindings = <&kp INT3>;
+			bindings = <&kp RC(RA(F))>;
 		};
 		combo_butt_4l3 {
 			timeout-ms = <30>;
 			key-positions = <3 11>;
 			layers = <3>;
-			bindings = <&kp INT4>;
+			bindings = <&kp RC(RA(T))>;
 		};
 		combo_butt_5l3 {
 			timeout-ms = <30>;
 			key-positions = <4 12>;
 			layers = <3>;
-			bindings = <&kp INT5>;
+			bindings = <&kp RC(RA(G))>;
 		};
 		combo_butt_6l3 {
 			timeout-ms = <30>;
 			key-positions = <5 13>;
 			layers = <3>;
-			bindings = <&kp INT6>;
+			bindings = <&kp RC(RA(C))>;
 		};
 		combo_butt_7l3 {
 			timeout-ms = <30>;
 			key-positions = <6 14>;
 			layers = <3>;
-			bindings = <&kp INT7>;
+			bindings = <&kp LG(SPACE)>;
 		};
 		combo_butt_8l3 {
 			timeout-ms = <30>;
 			key-positions = <7 15>;
 			layers = <3>;
-			bindings = <&kp INT8>;
+			bindings = <&kp LG(RA(LS(Q)))>;
 		};
 
 		/* 
