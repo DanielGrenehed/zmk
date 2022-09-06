@@ -135,12 +135,12 @@
 			// --------------------------------------------------------
 			// | A | W | F | P |				 	  | L | U | Y | O |
 			// | D | R | S | T |				 	  | N | E | I | . |
-			// | N/A | ALT | SHIFT | WIN/CTRl | SPACE/TAB | MO | MO | MO  |
+			// | N/A | ALT | SHIFT | WIN/CTRl | SPACE | MO | MO | MO  |
 			// --------------------------------------------------------
 			bindings = <
 				&kp A &kp W &kp F &kp P					&kp L &kp U &kp Y &kp O
 				&kp D &kp R &kp S &kp T 				&kp N &kp E &kp I &kp DOT
-				&gresc &kp RALT &kp LSHIFT &tdCMDCTRL		&tdSpaceTab &mo 1 &mo 2 &mo 4
+				&gresc &kp RALT &kp LSHIFT &tdCMDCTRL		&kp SPACE &mo 1 &mo 2 &mo 4
 			>;
 		};
 
@@ -275,7 +275,7 @@
 
 			| upper row
 			-----------------------------------------
-			| # | " | / | - |		| ? | & | ! | % |
+			| # | " | TAB | - |		| ? | & | ! | % |
 			-----------------------------------------
 			| lower row
 		*/
@@ -295,7 +295,7 @@
 			timeout-ms = <30>;
 			key-positions = <2 10>;
 			layers = <1>;
-			bindings = <&kp LS(N7)>;
+			bindings = <&kp TAB>;
 		};
 		combo_butt_4l1 {
 			timeout-ms = <30>;
