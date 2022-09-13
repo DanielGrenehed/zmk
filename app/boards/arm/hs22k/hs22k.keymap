@@ -126,6 +126,13 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp LS(N7)>, <&kp RA(LS(N7))>;
 		};
+		tdSquigg: squigg {
+			compatible = "zmk,behavior-tap-dance";
+			label = "Squigg";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp RA(RBKT)>, <&kp RA(N0)>;
+		};
     };
 
 	keymap {
@@ -160,12 +167,12 @@
 		mod2_layer {
 			// ---------------------------------------------------
 			// | § | ´` | ¨ | + |				 | 1 | 2 | 3 | 0 |
-			// | ≈ | ~ | =≈ | -~ |				 | 7 | 8 | 9 | */ |
+			// | ≈ | ~≈ | = | - |				 | 7 | 8 | 9 | */ |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
 				&kp GRAVE &td6 &kp RBKT &kp MINUS	&kp N1 &kp N2 &kp N3 &kp N0
-				&kp RA(N0) &kp RA(RBKT) &td7 &td8 	&kp N7 &kp N8 &kp N9 &td5
+				&kp RA(N0) &tdSquigg &kp LS(N0) &kp FSLH 	&kp N7 &kp N8 &kp N9 &td5
 				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
 		};
@@ -275,7 +282,7 @@
 
 			| upper row
 			-----------------------------------------
-			| # | " | TAB | - |		| ? | & | ! | % |
+			| # | * | TAB | _ |		| ? | & | ! | % |
 			-----------------------------------------
 			| lower row
 		*/
@@ -289,7 +296,7 @@
 			timeout-ms = <30>;
 			key-positions = <1 9>;
 			layers = <1>;
-			bindings = <&kp LS(N2)>;
+			bindings = <&kp LS(BSLH)>;
 		};
 		combo_butt_3l1 {
 			timeout-ms = <30>;
@@ -301,7 +308,7 @@
 			timeout-ms = <30>;
 			key-positions = <3 11>;
 			layers = <1>;
-			bindings = <&kp FSLH>;
+			bindings = <&kp LS(FSLH)>;
 		};
 
 		combo_butt_5l1 {
