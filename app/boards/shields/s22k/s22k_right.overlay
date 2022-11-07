@@ -1,0 +1,6 @@
+
+#include "s22k.dtsi"
+
+&default_transform {
+    col-offset = <11>;
+};
