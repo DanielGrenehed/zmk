@@ -14,15 +14,55 @@
 };
 
 / {
-	macros {
-        th_macro: th_macro {
-            label = "ZM_th_macro";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-			wait-ms = <0>;
-            bindings = <&macro_tap &kp T &kp H>;
-        };
-    };
+	macros {/*
+		bt_profile: set_bt_profile {
+			label = "Bluetooth_select_profile";
+			compatible = "zmk,behavior-macro-one-param";
+			#binding-cells = <0>;
+			bindings 
+				= <&macro_param_1to2>
+				, <&bt BT_SEL 0>
+				, <&out OUT_BLE>
+				;
+		};*/
+		
+		bt_pro_0: set_pro_0 {
+		 	label = "BLE_profile_0";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_SEL 0>, <&out OUT_BLE>;
+		};
+		bt_pro_1: set_pro_1 {
+		 	label = "BLE_profile_1";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_SEL 1>, <&out OUT_BLE>;
+		};
+		bt_pro_2: set_pro_2 {
+		 	label = "BLE_profile_2";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_SEL 2>, <&out OUT_BLE>;
+		};
+		bt_pro_3: set_pro_3 {
+		 	label = "BLE_profile_3";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_SEL 3>, <&out OUT_BLE>;
+		};
+		bt_pro_4: set_pro_4 {
+		 	label = "BLE_profile_4";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_SEL 4>, <&out OUT_BLE>;
+		};
+		bt_pro_5: set_pro_5 {
+		 	label = "BLE_profile_5";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_SEL 5>, <&out OUT_BLE>;
+		};
+    	};
 
 	behaviors {
 		/*
@@ -192,13 +232,13 @@
 
 		mod4_layer {
 			// ---------------------------------------------------
-			// | out_toggle | bt0 | bt1 | bt2 |				| Brightness up | play/pause | volume up | Lock |
-			// | out_toggle | bt3 | bt4 | bt5 |		| Brightness down | Next/Prev | volume down | 0 |
+			// | out_usb | bt0 | bt1 | bt2 |				| Brightness up | play/pause | volume up | Lock |
+			// | out_usb | bt3 | bt4 | bt5 |		| Brightness down | Next/Prev | volume down | 0 |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2		&kp C_BRI_UP &kp C_PP &kp C_VOL_UP &kp K_PWR
-				&out OUT_TOG &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 	&kp C_BRI_DN &tdNextPrev &kp C_VOL_DN &kp N0
+				&out OUT_USB &bt_pro_0 &bt_pro_1 &bt_pro_2		&kp C_BRI_UP &kp C_PP &kp C_VOL_UP &kp K_PWR
+				&out OUT_USB &bt_pro_3 &bt_pro_4 &bt_pro_5 	&kp C_BRI_DN &tdNextPrev &kp C_VOL_DN &kp N0
 				&trans &trans &trans &trans								&trans &trans &trans &trans
 			>;
 		};
