@@ -15,10 +15,10 @@
 
 / {
 	macros {/*
-		bt_profile: set_bt_profile {
+		bt_pro: set_bt_profile {
 			label = "Bluetooth_select_profile";
 			compatible = "zmk,behavior-macro-one-param";
-			#binding-cells = <0>;
+			#binding-cells = <1>;
 			bindings 
 				= <&macro_param_1to2>
 				, <&bt BT_SEL 0>
@@ -68,105 +68,28 @@
 		/*
 
 		*/
-        tdCMDCTRL: td-cmd-ctrl {
-            compatible = "zmk,behavior-tap-dance";
-            label = "CMD-CTRL";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LCTRL>, <&kp LGUI>;
-        };
-		td1: td-bracket { /* ( ) */
-			compatible = "zmk,behavior-tap-dance";
-			label = "BRACKET";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp LS(N8)>, <&kp LS(N9)>;
-		}; 
-		td2: td-square-bracket { /* [ ] */
-			compatible = "zmk,behavior-tap-dance";
-			label = "SQUARE-BRACKET";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp RA(N8)>, <&kp RA(N9)>;
+		td_cmd_ctrl: td-cmd-ctrl {
+		    compatible = "zmk,behavior-tap-dance";
+		    label = "CMD-CTRL";
+		    #binding-cells = <0>;
+		    tapping-term-ms = <200>;
+		    bindings = <&kp LCTRL>, <&kp LGUI>;
 		};
-		td3: td-curly-bracket { /* { } */
-			compatible = "zmk,behavior-tap-dance";
-			label = "CURLY-BRACKET";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp LS(RA(N8))>, <&kp LS(RA(N9))>;
-		};
-		td4: td-angle-bracket { /* < > */
-			compatible = "zmk,behavior-tap-dance";
-			label = "ANGLE-BRACKET";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp NON_US_BSLH>, <&kp PIPE2>;
-		};
-		td5: td-mlt-div { /* * / */
-			compatible = "zmk,behavior-tap-dance";
-			label = "MLT-DIV";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp LS(BSLH)>, <&kp LS(N7)>;
-		};
-		td6: strofe { /* ´ ` */
+		td_qt: strofe { /* ´ ` */
 			compatible = "zmk,behavior-tap-dance";
 			label = "STROFE";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp EQUAL>, <&kp LS(EQUAL)>;
 		};
-		td7: sequal { /* = ≈ */
-			compatible = "zmk,behavior-tap-dance";
-			label = "SEQUAL";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp LS(N0)>, <&kp RA(N0)>;
-		};
-		td8: sminus { /* - ~ */
-			compatible = "zmk,behavior-tap-dance";
-			label = "SMINUS";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp FSLH>, <&kp RA(RBKT)>;
-		};
-		tdNextPrev: nextprev {
+		td_nxt_prv: nextprev {
 			compatible = "zmk,behavior-tap-dance";
 			label = "NextPrev";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
 			bindings = <&kp C_NEXT>, <&kp C_PREV>;
 		};
-		tdBackDelete: backdelete {
-			compatible = "zmk,behavior-tap-dance";
-			label = "BackDelete";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp BSPC>, <&kp DEL>;
-		};
-		tdSpaceTab: spacetab {
-			compatible = "zmk,behavior-tap-dance";
-			label = "SpaceTab";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp SPACE>, <&kp TAB>;
-		};
-		tdStrings: strings { /* ' " */
-			compatible = "zmk,behavior-tap-dance";
-			label = "Strings";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp BSLH>, <&kp LS(N2)>;
-		};
-		tdSlashes: slashes { /* / \ */
-			compatible = "zmk,behavior-tap-dance";
-			label = "Slashes";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp LS(N7)>, <&kp RA(LS(N7))>;
-		};
-		tdSquigg: squigg {
+		td_squigg: squigg {
 			compatible = "zmk,behavior-tap-dance";
 			label = "Squigg";
 			#binding-cells = <0>;
@@ -185,21 +108,21 @@
 			// | N/A | ALT | SHIFT | WIN/CTRl | SPACE | MO | MO | MO  |
 			// --------------------------------------------------------
 			bindings = <
-				&kp A &kp W &kp F &kp D					&kp L &kp U &kp Y &kp DOT
-				&kp D &kp R &kp S &kp T 				&kp N &kp E &kp I &kp O
-				&gresc &kp RALT &kp LSHIFT &tdCMDCTRL		&kp SPACE &mo 1 &mo 2 &mo 4
+				&kp A &kp W &kp F &kp D				&kp L &kp U &kp Y &kp DOT
+				&none &kp R &kp S &kp T 			&kp N &kp E &kp I &none
+				&gresc &kp RALT &kp LSHIFT &td_cmd_ctrl		&kp SPACE &mo 1 &mo 2 &mo 4
 			>;
 		};
 
 		mod1_layer {
 			// ---------------------------------------------------
 			// | @ | ' | < | K |			| Å | Ä | Ö | , |
-			// |   | X | Q | V |			| J | ENTER | | | , |
+			// |   | X | Q | V |			| J | ENTER | | | |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp RA(N2) &kp BSLH &kp NON_US_BSLH &kp K		&kp LBKT &kp APOS &kp SEMI &kp COMMA
-				&kp LBKT &kp X &kp Q &kp V 		&kp J &kp RET &kp RA(N7) &kp COMMA
+				&kp RA(N2) &kp BSLH &kp NON_US_BSLH &kp K	&kp LBKT &kp APOS &kp SEMI &kp COMMA
+				&none &kp X &kp Q &kp V 			&kp J &kp RET &kp RA(N7) &none
 				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
 		};
@@ -207,39 +130,39 @@
 		mod2_layer {
 			// ---------------------------------------------------
 			// | § | ´` | ¨ | + |				 | 1 | 2 | 3 | 0 |
-			// | ≈ | ~≈ | = | - |				 | 7 | 8 | 9 | */ |
+			// |  | ~≈ | = | - |				 | 7 | 8 | 9 | |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&kp GRAVE &td6 &kp RBKT &kp MINUS	&kp N1 &kp N2 &kp N3 &kp N0
-				&kp RA(N0) &tdSquigg &kp LS(N0) &kp FSLH 	&kp N7 &kp N8 &kp N9 &td5
-				&trans &trans &trans &trans			&trans &trans &trans &trans
+				&kp GRAVE &td_qt &kp RBKT &kp MINUS	&kp N1 &kp N2 &kp N3 &kp N0
+				&none &td_squigg &kp LS(N0) &kp FSLH 	&kp N7 &kp N8 &kp N9 &none
+				&trans &trans &trans &trans		&trans &trans &trans &trans
 			>;
 		};
 		
 		mod3_layer {
 			// ---------------------------------------------------
 			// | sl4 | Backspace | UP | DELETE |	 | F10 | F11 | F12 | F2 |
-			// | sl4 | RIGHT | DOWN | LEFT |	 		 | F5 | ESC | F1 | F4 |
+			// | | RIGHT | DOWN | LEFT |	 | F5 | ESC | F1 | |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&sl 4 &kp BSPC &kp UP &kp DEL	&kp F10 &kp F11 &kp F12 &kp F2
-				&sl 4 &kp LEFT &kp DOWN &kp RIGHT 		&kp F5 &kp ESC &kp F1 &kp F4
-				&trans &trans &trans &trans				&trans &trans &trans &trans
+				&sl 4 &kp BSPC &kp UP &kp DEL		&kp F10 &kp F11 &kp F12 &kp F2
+				&none &kp LEFT &kp DOWN &kp RIGHT 	&kp F5 &kp ESC &kp F1 &none
+				&trans &trans &trans &trans		&trans &trans &trans &trans
 			>;
 		};
 
 		mod4_layer {
 			// ---------------------------------------------------
-			// | out_usb | bt0 | bt1 | bt2 |				| Brightness up | play/pause | volume up | Lock |
-			// | out_usb | bt3 | bt4 | bt5 |		| Brightness down | Next/Prev | volume down | 0 |
+			// | out_usb | bt0 | bt1 | bt2 |	| Brightness up | play/pause | volume up | Lock |
+			// | | bt3 | bt4 | bt5 |		| Brightness down | Next/Prev | volume down |   |
 			// | N/A | ALT | SHIFT | WIN | SPACE | MO | MO | MO  |
 			// ---------------------------------------------------
 			bindings = <
-				&out OUT_USB &bt_pro_0 &bt_pro_1 &bt_pro_2		&kp C_BRI_UP &kp C_PP &kp C_VOL_UP &kp K_PWR
-				&out OUT_USB &bt_pro_3 &bt_pro_4 &bt_pro_5 	&kp C_BRI_DN &tdNextPrev &kp C_VOL_DN &kp N0
-				&trans &trans &trans &trans								&trans &trans &trans &trans
+				&out OUT_USB &bt_pro_0 &bt_pro_1 &bt_pro_2	&kp C_BRI_UP &kp C_PP &kp C_VOL_UP &kp K_PWR
+				&none &bt_pro_3 &bt_pro_4 &bt_pro_5 		&kp C_BRI_DN &td_nxt_prv &kp C_VOL_DN &none
+				&trans &trans &trans &trans			&trans &trans &trans &trans
 			>;
 		};
 
@@ -267,13 +190,8 @@
 			|  | P | C | G |		| M | H | O |  |
 			-----------------------------------------
 			| lower row
-			*/
-		combo_butt_1l0 {
-			timeout-ms = <30>;
-			key-positions = <0 8>;
-			layers = <0>;
-			bindings = <&kp Z>;
-		};
+		
+		*/
 		combo_butt_2l0 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
@@ -286,12 +204,14 @@
 			layers = <0>;
 			bindings = <&kp C>;
 		};
-        combo_butt_4l0 {
-            timeout-ms = <30>;
-            key-positions = <3 11>;
-			layers = <0>;
-            bindings = <&kp G>;
-        };
+		combo_butt_4l0 {
+		    	timeout-ms = <30>;
+		    	key-positions = <3 11>;
+		    	layers = <0>;
+		    	bindings = <&kp G>;
+		};
+
+
 		combo_butt_5l0 {
 			timeout-ms = <30>;
 			key-positions = <4 12>;
@@ -310,12 +230,6 @@
 			layers = <0>;
 			bindings = <&kp O>;
 		};
-		combo_butt_8l0 {
-			timeout-ms = <30>;
-			key-positions = <7 15>;
-			layers = <0>;
-			bindings = <&kp Q>;
-		};
 		
 		/*
 			Layer 1 In-between row
@@ -326,12 +240,6 @@
 			-----------------------------------------
 			| lower row
 		*/
-		combo_butt_1l1 {
-			timeout-ms = <30>;
-			key-positions = <0 8>;
-			layers = <1>;
-			bindings = <&kp LS(N3)>;
-		};
 		combo_butt_2l1 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
@@ -351,6 +259,7 @@
 			bindings = <&kp B>;
 		};
 
+
 		combo_butt_5l1 {
 			timeout-ms = <30>;
 			key-positions = <4 12>;
@@ -369,13 +278,7 @@
 			layers = <1>;
 			bindings = <&kp LS(N1)>;
 		};
-		combo_butt_8l1 {
-			timeout-ms = <30>;
-			key-positions = <7 15>;
-			layers = <1>;
-			bindings = <&kp LS(N5)>;
-		};
-
+	
 		/*
 			Layer 2 In-between row
 
@@ -384,12 +287,6 @@
 			-----------------------------------------
 
 		*/
-		combo_butt_1l2 {
-			timeout-ms = <30>;
-			key-positions = <0 8>;
-			layers = <2>;
-			bindings = <&kp EXCL>;
-		};
 		combo_butt_2l2 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
@@ -408,6 +305,8 @@
 			layers = <2>;
 			bindings = <&kp LS(BSLH)>;
 		};
+
+
 		combo_butt_5l2 {
 			timeout-ms = <30>;
 			key-positions = <4 12>;
@@ -426,69 +325,53 @@
 			layers = <2>;
 			bindings = <&kp N6>;
 		};
-		combo_butt_8l2 {
-			timeout-ms = <30>;
-			key-positions = <7 15>;
-			layers = <2>;
-			bindings = <&kp PRCNT>;
-		};
-		
+			
 		/* 
 			Layer 3 In-between row
 
 			Magnet align thirds
-			-----------------------------------------------------------------
-			| CTRL+ALT+D | CTRL+ALT+E | CTRL+ALT+F | CTRL+ALT+T |		| CTRL+ALT+G | CTRL+ALT+C | WIN+SPACE | WIN+ALT+SHIFT+Q |
-			-----------------------------------------------------------------
+			---------------------------------------------------
+			|  | F3 | F4 | F6 |		| F7 | F8 | F9 |  |
+			---------------------------------------------------
 		*/
-		combo_butt_1l3 {
-			timeout-ms = <30>;
-			key-positions = <0 8>;
-			layers = <3>;
-			bindings = <&kp RC(RA(D))>;
-		};
 		combo_butt_2l3 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
 			layers = <3>;
-			bindings = <&kp RC(RA(E))>;
+			bindings = <&kp F3>;
 		};
 		combo_butt_3l3 {
 			timeout-ms = <30>;
 			key-positions = <2 10>;
 			layers = <3>;
-			bindings = <&kp RC(RA(F))>;
+			bindings = <&kp F4>;
 		};
 		combo_butt_4l3 {
 			timeout-ms = <30>;
 			key-positions = <3 11>;
 			layers = <3>;
-			bindings = <&kp RC(RA(T))>;
+			bindings = <&kp F6>;
 		};
+
+
 		combo_butt_5l3 {
 			timeout-ms = <30>;
 			key-positions = <4 12>;
 			layers = <3>;
-			bindings = <&kp RC(RA(G))>;
+			bindings = <&kp F7>;
 		};
 		combo_butt_6l3 {
 			timeout-ms = <30>;
 			key-positions = <5 13>;
 			layers = <3>;
-			bindings = <&kp RC(RA(C))>;
+			bindings = <&kp F8>;
 		};
 		combo_butt_7l3 {
 			timeout-ms = <30>;
 			key-positions = <6 14>;
 			layers = <3>;
-			bindings = <&kp LG(SPACE)>;
-		};
-		combo_butt_8l3 {
-			timeout-ms = <30>;
-			key-positions = <7 15>;
-			layers = <3>;
-			bindings = <&kp LG(RA(LS(Q)))>;
-		};
+			bindings = <&kp F9>;
+		};		
 
 		/* 
 			Layer 4 In-between row
@@ -496,12 +379,7 @@
 			|  |  |  |  |		| Flash | Clear bt profile | ? | |
 			-------------------------------------------------------------
 		*/
-		combo_butt_1l4 {
-			timeout-ms = <30>;
-			key-positions = <0 8>;
-			layers = <4>;
-			bindings = <&kp 0>;
-		};
+		
 		combo_butt_2l4 {
 			timeout-ms = <30>;
 			key-positions = <1 9>;
@@ -520,6 +398,8 @@
 			layers = <4>;
 			bindings = <&kp 0>;
 		};
+
+
 		combo_butt_5l4 {
 			timeout-ms = <30>;
 			key-positions = <4 12>;
@@ -538,12 +418,53 @@
 			layers = <4>;
 			bindings = <&kp UNDER>;
 		};
-		combo_butt_8l4 {
-			timeout-ms = <30>;
-			key-positions = <7 15>;
-			layers = <4>;
-			bindings = <&bootloader>;
-		};
+		
+		/*
+			key numbers:
+			    --------------U--       	    	    --U--------------
+			----| 1 | 2 | 3 |[n]|     	    	    |[n]| 4 | 5 | 6 |----
+			| 0 | 9 | 10| 11|[!]|      	    	    |[!]| 12| 13| 14| 7 |
+			| 8 |-----------|[n]|=---               ---=|[n]|-----------| 15|
+		        -----       | 16| 17| 18|               | 19| 20| 21|       -----
+			            -------------	        -------------
+																			    			// 8 and 15 NC
+		*/
 
+		combo_up_left {
+			timeout-ms = <60>;
+			key-positions = <1 2 3>;
+			layers = <0>;
+			bindings = <&kp F14>;
+		};
+		combo_up_right {
+			timeout-ms = <60>;
+			key-positions = <4 5 6>;
+			layers = <0>;
+			bindings = <&kp F15>;
+		};
+		combo_home_left {
+			timeout-ms = <60>;
+			key-positions = <1 2 3 9 10 11>;
+			layers = <0>;
+			bindings = <&kp F18>;
+		};
+		combo_home_right {
+			timeout-ms = <60>;
+			key-positions = <4 5 6 12 13 14>;
+			layers = <0>;
+			bindings = <&kp F19>;
+		};
+		combo_down_left {
+			timeout-ms = <60>;
+			key-positions = <9 10 11>;
+			layers = <0>;
+			bindings = <&kp F16>;
+		};
+		combo_down_right {
+			timeout-ms = <60>;
+			key-positions = <12 13 14>;
+			layers = <0>;
+			bindings = <&kp F17>;
+		};
     };
 };
